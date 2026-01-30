@@ -1,0 +1,129 @@
+# Azure DevOps Pipeline for Semantic Release
+# Triggers when code is merged into the main branch.
+# Automatically determines version, updates changelog, and creates git tags.
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    exclude:
+      - README.md
+      - docs/*
+      - "*.md"
+
+# Don't trigger on PR creation, only on actual merge
+pr: none
+
+variables:
+  # Node.js version to use
+  nodeVersion: '20.x'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: SemanticRelease
+  displayName: 'Semantic Release and Tagging'
+  
+  steps:
+  # Checkout with full history to analyze commits properly
+  - checkout: self
+    displayName: 'Checkout repository with full history'
+    persistCredentials: true
+    fetchDepth: 0
+    
+  # Configure Git user for semantic-release commits
+  - script: |
+      git config --global user.email "azure-pipelines@microsoft.com"
+      git config --global user.name "Azure Pipelines"
+    displayName: 'Configure Git user'
+    
+  # Setup Node.js
+  - task: NodeTool@0
+    displayName: 'Setup Node.js $(nodeVersion)'
+    inputs:
+      versionSpec: '$(nodeVersion)'
+      
+  # Cache node_modules for faster builds
+  - task: Cache@2
+    displayName: 'Cache node_modules'
+    inputs:
+      key: 'npm | "$(Agent.OS)" | package.json'
+      restoreKeys: |
+        npm | "$(Agent.OS)"
+      path: 'node_modules'
+      
+  # Install dependencies
+  - script: |
+      npm install
+    displayName: 'Install dependencies'
+    
+  # Run semantic-release
+  # This will:
+  # 1. Analyze commits since last release
+  # 2. Determine version bump (major/minor/patch)
+  # 3. Update {{PYTHON_PKG_DIR}}/__init__.py version
+  # 4. Generate/update CHANGELOG.md
+  # 5. Create git tag
+  # 6. Push changes back to repository
+  - script: |
+      npx semantic-release
+    displayName: 'Run Semantic Release'
+    env:
+      GIT_TOKEN: $(System.AccessToken)
+      # Use System Access Token for git operations (has bypass permissions)
+      GH_TOKEN: $(System.AccessToken)
+      HUSKY: '0'
+      
+  # Optional: Trigger the existing release pipeline if a new tag was created
+  - script: |
+      # Check if semantic-release created a new tag
+      NEW_TAG=$(git describe --tags --exact-match HEAD 2>/dev/null || echo "")
+      if [ ! -z "$NEW_TAG" ]; then
+        echo "##vso[task.setvariable variable=newTag;isOutput=true]$NEW_TAG"
+        echo "New version tagged: $NEW_TAG"
+        echo "##vso[task.setvariable variable=releaseCreated;isOutput=true]true"
+      else
+        echo "No new release created"
+        echo "##vso[task.setvariable variable=releaseCreated;isOutput=true]false"
+      fi
+    displayName: 'Check if new release was created'
+    name: 'checkRelease'
+    
+  # Optional: Display release information
+  - script: |
+      if [ "$(checkRelease.releaseCreated)" = "true" ]; then
+        echo "🎉 New release created: $(checkRelease.newTag)"
+        echo "📋 Changelog updated automatically"
+        echo "🏷️ Git tag created: $(checkRelease.newTag)"
+        echo "📦 Package.json version updated"
+        echo ""
+        echo "Next steps:"
+        echo "- The existing release pipeline will trigger automatically for tag $(checkRelease.newTag)"
+        echo "- Docker image will be built and pushed to ACR"
+      else
+        echo "ℹ️ No new release created"
+        echo "This typically means:"
+        echo "- No conventional commits found since last release"
+        echo "- Only docs or other non-release commits were merged"
+      fi
+    displayName: 'Release Summary'
+    condition: always()
+
+# Optional: Create a separate job that triggers the existing release pipeline
+# This job runs only if a new release was created
+- job: TriggerDockerBuild
+  displayName: 'Trigger Docker Build Pipeline'
+  dependsOn: SemanticRelease
+  condition: eq(dependencies.SemanticRelease.outputs['checkRelease.releaseCreated'], 'true')
+  
+  variables:
+    newTag: $[ dependencies.SemanticRelease.outputs['checkRelease.newTag'] ]
+    
+  steps:
+  - script: |
+      echo "Triggering Docker build for new release: $(newTag)"
+      # The existing release pipeline (e.g. Docker build) will automatically
+      # trigger because it listens for new tags
+    displayName: 'Notify Docker Build Trigger'
