@@ -4,7 +4,7 @@ This repository contains templates and configurations for implementing [Semantic
 
 ## Available Templates
 
-### 🐍 [Python](python-template/)
+### [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](python-template/)
 A complete setup for Python projects using Azure DevOps.
 - **Status**: ✅ Available
 - **Features**: 
@@ -12,11 +12,11 @@ A complete setup for Python projects using Azure DevOps.
   - Updates `__version__` in `__init__.py`.
   - Azure DevOps pipeline configuration.
 
-### 🟢 Node.js
+### ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 Standard configuration for Node.js / TypeScript applications.
 - **Status**: 🚧 Planned
 
-### 🔷 .NET
+### ![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
 Templates for .NET Core / C# applications.
 - **Status**: 🚧 Planned
 
