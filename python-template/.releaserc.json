@@ -1,6 +1,10 @@
 {
     "branches": [
-        "main"
+        "main",
+    {
+      "name": "pre-release",
+      "prerelease": "beta"
+    }
     ],
     "tagFormat": "${version}",
     "plugins": [
@@ -9,46 +13,17 @@
             {
                 "preset": "conventionalcommits",
                 "releaseRules": [
-                    {
-                        "type": "feat",
-                        "release": "minor"
-                    },
-                    {
-                        "type": "fix",
-                        "release": "patch"
-                    },
-                    {
-                        "type": "perf",
-                        "release": "patch"
-                    },
-                    {
-                        "type": "refactor",
-                        "release": "patch"
-                    },
-                    {
-                        "type": "style",
-                        "release": "patch"
-                    },
-                    {
-                        "type": "docs",
-                        "release": false
-                    },
-                    {
-                        "type": "test",
-                        "release": false
-                    },
-                    {
-                        "type": "ci",
-                        "release": false
-                    },
-                    {
-                        "type": "chore",
-                        "release": false
-                    },
-                    {
-                        "type": "build",
-                        "release": false
-                    }
+                    { "breaking": true, "release": "major" },
+                    { "type": "feat", "release": "minor" },
+                    { "type": "fix", "release": "patch" },
+                    { "type": "perf", "release": "patch" },
+                    { "type": "refactor", "release": "patch" },
+                    { "type": "style", "release": "patch" },
+                    { "type": "docs", "release": false },
+                    { "type": "test", "release": false },
+                    { "type": "ci", "release": false },
+                    { "type": "chore", "release": false },
+                    { "type": "build", "release": false }
                 ],
                 "parserOpts": {
                     "headerPattern": "^(?:Merged PR \\d+:\\s*)?(?:Merged .* to .*:\\s*)?(\\w*)(?:\\(([\\w\\$\\.\\-\\*\\s]*)\\))?!?:\\s(.*)$",
