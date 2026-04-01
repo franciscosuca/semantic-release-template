@@ -4,21 +4,32 @@ This repository contains templates and configurations for implementing [Semantic
 
 ## Available Templates
 
-### [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](python-template/)
+### [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](templates/js/)
 
-A complete setup for Python projects using Azure DevOps.
+Complete setup for Node.js / TypeScript applications with GitHub Actions CI/CD.
 
 - **Status**: ✅ Available
+- **Location**: `templates/js/`
 - **Features**:
   - Automated version bumping based on conventional commits.
-  - Updates `__version__` in `__init__.py`.
-  - Azure DevOps pipeline configuration.
+  - GitHub Actions workflow for build, test, and semantic release.
+  - Docker containerization support.
+  - Semantic Release configuration with changelog generation.
+  - Ready for GCP deployment (Cloud Run, App Engine, Cloud Functions).
 
-### ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+### [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](templates/py/)
 
-Standard configuration for Node.js / TypeScript applications.
+Complete setup for Python projects with GitHub Actions CI/CD.
 
-- **Status**: 🚧 Planned
+- **Status**: ✅ Available
+- **Location**: `templates/py/`
+- **Features**:
+  - Automated version bumping based on conventional commits.
+  - GitHub Actions workflow for build, test, and semantic release.
+  - Python 3.11 support with pytest integration.
+  - Docker containerization support.
+  - Semantic Release configuration with changelog generation.
+  - Ready for GCP deployment (Cloud Run, App Engine, Cloud Functions).
 
 ### ![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
 
@@ -28,4 +39,8 @@ Templates for .NET Core / C# applications.
 
 ## Getting Started
 
-Navigate to the specific language folder (e.g., `python-template`) and follow the `README.md` inside for integration instructions.
+Navigate to the specific template folder under `templates/` (e.g., `templates/js/` or `templates/py/`) and follow the `README.md` inside for:
+- Integration instructions
+- GitHub Actions workflow setup
+- GCP deployment options
+- Semantic Release configuration
