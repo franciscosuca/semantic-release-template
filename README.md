@@ -33,9 +33,17 @@ Complete setup for Python projects with GitHub Actions CI/CD.
 
 ### ![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
 
-Templates for .NET Core / C# applications.
+Complete setup for .NET Core / C# applications.
 
-- **Status**: 🚧 Planned
+- **Status**: ✅ Available
+- **Location**: `templates/.net/`
+- **Features**:
+  - Automated version bumping based on conventional commits.
+  - .csproj file version updates with semantic versioning.
+  - VERSION.txt management for build pipelines.
+  - GitHub Actions workflow ready.
+  - Docker containerization support.
+  - Semantic Release configuration with changelog generation.
 
 ## Getting Started
 
