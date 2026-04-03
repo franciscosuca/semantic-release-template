@@ -48,6 +48,7 @@ Complete setup for .NET Core / C# applications.
 ## Getting Started
 
 Navigate to the specific template folder under `templates/` (e.g., `templates/js/` or `templates/py/`) and follow the `README.md` inside for:
+
 - Integration instructions
 - GitHub Actions workflow setup
 - GCP deployment options

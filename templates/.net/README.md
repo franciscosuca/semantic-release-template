@@ -26,11 +26,13 @@ This template sets up automated version management and release automation with t
    - `{{CSPROJ_PATH}}` with the path to your `.csproj` file (e.g., `MyProject/MyProject.csproj`)
 
 3. **Install Dependencies**:
+
    ```bash
    npm install -D semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/exec @semantic-release/git conventional-changelog-conventionalcommits
    ```
 
 4. **Configure Your `.csproj`**: Ensure your `.csproj` file has these version properties (if they don't exist, add them):
+
    ```xml
    <Version>0.0.0</Version>
    <AssemblyVersion>0.0.0</AssemblyVersion>
@@ -39,6 +41,7 @@ This template sets up automated version management and release automation with t
    ```
 
 5. **Setup CI/CD Pipeline** (e.g., GitHub Actions):
+
    ```yaml
    - name: Release
      run: npx semantic-release
