@@ -1,6 +1,6 @@
 # JS Semantic Release Template
 
-A ready-to-use template for JavaScript/Node.js projects configured with [`semantic-release`](https://github.com/semantic-release/semantic-release).
+A ready-to-use template for JavaScript/Node.js projects configured with [`semantic-release`](https://github.com/semantic-release/semantic-release) and prepared for Azure DevOps pipeline integration.
 
 ## Features
 
@@ -19,11 +19,16 @@ This template sets up automated version management and package publishing with t
 ## Getting Started
 
 1. Copy `.releaserc.json` and `package.json` details into your project.
-2. Install the necessary development dependencies:
+2. Setup CI/CD pipeline to run semantic-release on your release branches.
+3. Ensure your `GITHUB_TOKEN` (and `NPM_TOKEN` if you decide to publish to an npm registry) are configured in your CI environment.
 
-   ```bash
-   npm install -D semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/npm @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits
-   ```
+The template pipelines install and run semantic-release packages at runtime with pinned versions, so you do not need to add semantic-release devDependencies to your project.
 
-3. Setup CI/CD pipeline (e.g., GitHub Actions) to run `npx semantic-release` on your main branch.
-4. Ensure your `GITHUB_TOKEN` (and `NPM_TOKEN` if you decide to publish to an npm registry) are configured in your CI environment.
+## Azure DevOps Pipeline Convention
+
+Use the following standard location in this template:
+
+- Pipeline folder: `pipe/`
+- Pipeline file: `pipe/azure-pipelines-semantic-release.yml`
+
+The pipeline file is a generic Azure DevOps template intended to be reusable across JavaScript projects and runs semantic-release packages directly from the pipeline.
