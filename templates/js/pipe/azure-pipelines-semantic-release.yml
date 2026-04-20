@@ -7,7 +7,7 @@ trigger:
 pr: none
 
 variables:
-  nodeVersion: '20.x'
+  nodeVersion: '22.x'
   SR_VERSION: '24.0.0'
   SR_CHANGELOG_VERSION: '6.0.3'
   SR_COMMIT_ANALYZER_VERSION: '13.0.1'
