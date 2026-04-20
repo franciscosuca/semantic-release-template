@@ -22,6 +22,14 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  SR_VERSION: '24.0.0'
+  SR_CHANGELOG_VERSION: '6.0.3'
+  SR_COMMIT_ANALYZER_VERSION: '13.0.1'
+  SR_GIT_VERSION: '10.0.1'
+  SR_GITHUB_VERSION: '11.0.6'
+  SR_NPM_VERSION: '12.0.2'
+  SR_RELEASE_NOTES_VERSION: '14.1.0'
+  CC_CONVENTIONALCOMMITS_VERSION: '8.0.0'
 
 jobs:
   build-and-release:
@@ -58,4 +66,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: |
+          npx \
+            --package semantic-release@${SR_VERSION} \
+            --package @semantic-release/changelog@${SR_CHANGELOG_VERSION} \
+            --package @semantic-release/commit-analyzer@${SR_COMMIT_ANALYZER_VERSION} \
+            --package @semantic-release/git@${SR_GIT_VERSION} \
+            --package @semantic-release/github@${SR_GITHUB_VERSION} \
+            --package @semantic-release/npm@${SR_NPM_VERSION} \
+            --package @semantic-release/release-notes-generator@${SR_RELEASE_NOTES_VERSION} \
+            --package conventional-changelog-conventionalcommits@${CC_CONVENTIONALCOMMITS_VERSION} \
+            semantic-release
