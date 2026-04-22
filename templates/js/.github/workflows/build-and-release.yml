@@ -22,7 +22,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  SR_VERSION: '24.0.0'
+  SR_VERSION: '24.1.0'
   SR_CHANGELOG_VERSION: '6.0.3'
   SR_COMMIT_ANALYZER_VERSION: '13.0.1'
   SR_GIT_VERSION: '10.0.1'
@@ -50,7 +50,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
       - name: Install dependencies
