@@ -25,9 +25,8 @@ env:
   SR_VERSION: '24.0.0'
   SR_CHANGELOG_VERSION: '6.0.3'
   SR_COMMIT_ANALYZER_VERSION: '13.0.1'
+  SR_EXEC_VERSION: '6.0.3'
   SR_GIT_VERSION: '10.0.1'
-  SR_GITHUB_VERSION: '11.0.6'
-  SR_NPM_VERSION: '12.0.2'
   SR_RELEASE_NOTES_VERSION: '14.1.0'
   CC_CONVENTIONALCOMMITS_VERSION: '8.0.0'
 
@@ -51,10 +50,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Run tests (if any)
         run: npm test --if-present
@@ -65,15 +60,13 @@ jobs:
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npx \
             --package semantic-release@${SR_VERSION} \
             --package @semantic-release/changelog@${SR_CHANGELOG_VERSION} \
             --package @semantic-release/commit-analyzer@${SR_COMMIT_ANALYZER_VERSION} \
+            --package @semantic-release/exec@${SR_EXEC_VERSION} \
             --package @semantic-release/git@${SR_GIT_VERSION} \
-            --package @semantic-release/github@${SR_GITHUB_VERSION} \
-            --package @semantic-release/npm@${SR_NPM_VERSION} \
             --package @semantic-release/release-notes-generator@${SR_RELEASE_NOTES_VERSION} \
             --package conventional-changelog-conventionalcommits@${CC_CONVENTIONALCOMMITS_VERSION} \
             semantic-release

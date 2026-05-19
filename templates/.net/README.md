@@ -25,11 +25,7 @@ This template sets up automated version management and release automation with t
 2. **Update Placeholders**: Open `.releaserc.json` and replace:
    - `{{CSPROJ_PATH}}` with the path to your `.csproj` file (e.g., `MyProject/MyProject.csproj`)
 
-3. **Install Dependencies**:
-
-   ```bash
-   npm install -D semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/exec @semantic-release/git conventional-changelog-conventionalcommits
-   ```
+3. **Keep Release Tooling in CI**: This template is set up so semantic-release packages are installed transiently in CI at runtime. You do not need to add them to your repository `package.json`.
 
 4. **Configure Your `.csproj`**: Ensure your `.csproj` file has these version properties (if they don't exist, add them):
 
@@ -42,12 +38,21 @@ This template sets up automated version management and release automation with t
 
 5. **Setup CI/CD Pipeline** (e.g., GitHub Actions):
 
-   ```yaml
-   - name: Release
-     run: npx semantic-release
-     env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-   ```
+    ```yaml
+      - name: Release
+         run: |
+            npx \
+               --package semantic-release@24.0.0 \
+               --package @semantic-release/changelog@6.0.3 \
+               --package @semantic-release/commit-analyzer@13.0.1 \
+               --package @semantic-release/exec@6.0.3 \
+               --package @semantic-release/git@10.0.1 \
+               --package @semantic-release/release-notes-generator@14.1.0 \
+               --package conventional-changelog-conventionalcommits@8.0.0 \
+               semantic-release
+         env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    ```
 
 6. **Commit and Push**: Use conventional commit messages to trigger releases:
    - `feat:` → minor version bump
