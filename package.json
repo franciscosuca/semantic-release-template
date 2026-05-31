@@ -1,14 +1,14 @@
 {
-  "name": "prompt-pack",
-  "version": "1.0.1",
-  "description": "Utilities for managing prompt packs",
+  "name": "semantic-release-template",
+  "version": "1.0.0",
+  "description": "Utilities for managing template packs",
   "private": false,
   "scripts": {
     "create-tag": "git tag -a v$npm_package_version -m \"Release v$npm_package_version\" && git push origin --tags"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/franciscosuca/prompt-pack.git"
+    "url": "git+https://github.com/franciscosuca/semantic-release-template.git"
   },
   "author": "franciscosuca",
   "license": "MIT",
