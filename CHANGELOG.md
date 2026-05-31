@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/franciscosuca/semantic-release-template/compare/v1.0.0...v1.0.1) (2026-05-31)
+
+### Bug Fixes
+
+* **remove TODO section and ensure Semantic Release configuration is highlighted:** fix: remove TODO section and ensure Semantic Release configuration is highlighted ([28b7b3c](https://github.com/franciscosuca/semantic-release-template/commit/28b7b3c4ce94eab9c8e1a7f17376e5228b74b33c))
+
 ## 1.0.0 (2026-05-31)
 
 ### Features
