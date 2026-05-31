@@ -53,8 +53,3 @@ Navigate to the specific template folder under `templates/` (e.g., `templates/js
 - GitHub Actions workflow setup
 - GCP deployment options
 - Semantic Release configuration
-
-### TODO
-
-- Make this repo to update the pipelines of the projects we are constantly using.
-- change the name of the repo to "tools-pack"
