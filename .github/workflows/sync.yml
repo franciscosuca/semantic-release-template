@@ -5,9 +5,7 @@ on:
     branches:
       - main
     paths:
-      - '.templates/.net/**'
-      - '.templates/js/**'
-      - '.templates/py/**'
+      - 'templates/js/**'
 
 jobs:
   sync:
