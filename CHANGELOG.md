@@ -1,3 +1,13 @@
+## [1.1.0](https://github.com/franciscosuca/semantic-release-template/compare/v1.0.1...v1.1.0) (2026-06-02)
+
+### Features
+
+* **add test pipeline and update package.json for testing support:** feat: add test pipeline and update package.json for testing support ([88b3b05](https://github.com/franciscosuca/semantic-release-template/commit/88b3b05b08415e7543824cf9a1f955950afe6857))
+
+### Bug Fixes
+
+* **remove pull_request trigger from build-and-release workflows:** fix: remove pull_request trigger from build-and-release workflows ([ebbb868](https://github.com/franciscosuca/semantic-release-template/commit/ebbb8684844a0f2f1c984e5e8d4d2b1fcc3830d1))
+
 ## [1.0.1](https://github.com/franciscosuca/semantic-release-template/compare/v1.0.0...v1.0.1) (2026-05-31)
 
 ### Bug Fixes
