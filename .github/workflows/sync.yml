@@ -7,6 +7,10 @@ on:
     paths:
       - 'templates/js/**'
 
+concurrency:
+  group: file-sync
+  cancel-in-progress: true
+
 jobs:
   sync:
     runs-on: ubuntu-latest
