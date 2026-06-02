@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/franciscosuca/semantic-release-template/compare/v1.1.0...v1.1.1) (2026-06-02)
+
+### Bug Fixes
+
+* **add concurrency settings to sync workflow:** fix: add concurrency settings to sync workflow ([4c43d97](https://github.com/franciscosuca/semantic-release-template/commit/4c43d979b73dff3fa7adecd9084acba5e334d6bf))
+
 ## [1.1.0](https://github.com/franciscosuca/semantic-release-template/compare/v1.0.1...v1.1.0) (2026-06-02)
 
 ### Features
