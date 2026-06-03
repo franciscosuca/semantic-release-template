@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/franciscosuca/semantic-release-template/compare/v1.1.1...v1.2.0) (2026-06-03)
+
+### Features
+
+* **add semantic-release pipeline and git submodule documentation:** feat: add semantic-release pipeline and git submodule documentation ([e4b11fd](https://github.com/franciscosuca/semantic-release-template/commit/e4b11fd68949bb5ea9326dc4c386d7c7f353dea2))
+
 ## [1.1.1](https://github.com/franciscosuca/semantic-release-template/compare/v1.1.0...v1.1.1) (2026-06-02)
 
 ### Bug Fixes
