@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/franciscosuca/semantic-release-template/compare/v1.2.0...v1.2.1) (2026-06-13)
+
+### Bug Fixes
+
+* **remove redundant workflow sync entries in sync.yml:** fix: remove redundant workflow sync entries in sync.yml ([8f3e846](https://github.com/franciscosuca/semantic-release-template/commit/8f3e846de0f9f9a6f80e7a406495c32699feaa5a))
+
 ## [1.2.0](https://github.com/franciscosuca/semantic-release-template/compare/v1.1.1...v1.2.0) (2026-06-03)
 
 ### Features

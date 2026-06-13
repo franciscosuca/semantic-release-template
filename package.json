@@ -1,6 +1,6 @@
 {
   "name": "semantic-release-template",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Utilities for managing template packs",
   "private": false,
   "scripts": {
