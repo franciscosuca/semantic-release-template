@@ -12,5 +12,3 @@ franciscosuca/martech:
     dest: .releaserc.json
   - source: templates/js/cloudbuild.yaml
     dest: cloudbuild.yaml
-  - source: templates/js/.github/workflows/build-and-release.yml
-    dest: .github/workflows/build-and-release.yml
