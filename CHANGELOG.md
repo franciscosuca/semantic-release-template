@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/franciscosuca/semantic-release-template/compare/v1.2.1...v1.3.0) (2026-06-30)
+
+### Features
+
+* **add az pipeline to test projects.:** feat: add az pipeline to test projects. ([52a856d](https://github.com/franciscosuca/semantic-release-template/commit/52a856d75905fcf9d0342cd433694e4c8e485a01))
+
 ## [1.2.1](https://github.com/franciscosuca/semantic-release-template/compare/v1.2.0...v1.2.1) (2026-06-13)
 
 ### Bug Fixes
